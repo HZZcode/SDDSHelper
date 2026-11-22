@@ -1,0 +1,27 @@
+<Project>
+
+  <!--
+    Offline build support: pin the targeting packs to the locally installed 8.0.23
+    so that dotnet restore does not try to resolve the SDK-bundled 8.0.34 from the
+    network. Must live in Directory.Build.targets (evaluated after the SDK defines
+    KnownFrameworkReference).
+  -->
+  <ItemGroup>
+    <KnownFrameworkReference Update="Microsoft.NETCore.App">
+      <TargetingPackVersion>8.0.23</TargetingPackVersion>
+    </KnownFrameworkReference>
+    <KnownFrameworkReference Update="Microsoft.WindowsDesktop.App">
+      <TargetingPackVersion>8.0.23</TargetingPackVersion>
+    </KnownFrameworkReference>
+    <KnownFrameworkReference Update="Microsoft.WindowsDesktop.App.WPF">
+      <TargetingPackVersion>8.0.23</TargetingPackVersion>
+    </KnownFrameworkReference>
+    <KnownFrameworkReference Update="Microsoft.WindowsDesktop.App.WindowsForms">
+      <TargetingPackVersion>8.0.23</TargetingPackVersion>
+    </KnownFrameworkReference>
+    <KnownFrameworkReference Update="Microsoft.AspNetCore.App">
+      <TargetingPackVersion>8.0.23</TargetingPackVersion>
+    </KnownFrameworkReference>
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,8 @@
+- Name: SDDSHelper
+  Version: 1.0.0
+  DLL: Code/bin/Debug/SDDSHelper.dll
+  Dependencies:
+    - Name: EverestCore
+      Version: 1.5577.0
+    - Name: CanyonHelper
+      Version: 1.1.6

@@ -1,0 +1,5 @@
+# Build artifacts
+Code/bin/
+Code/obj/
+*.user
+.vs/

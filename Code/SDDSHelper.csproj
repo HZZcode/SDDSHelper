@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <AssemblyName>SDDSHelper</AssemblyName>
+    <RootNamespace>SDDSHelper</RootNamespace>
+    <Version>1.0.0</Version>
+    <Nullable>disable</Nullable>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <!-- Disable the Roslyn shared compilation server (named pipes); compile in-process instead -->
+    <UseSharedCompilation>false</UseSharedCompilation>
+    <!-- Game install path; override with -p:CelesteGamePath=... on other machines -->
+    <CelesteGamePath Condition="'$(CelesteGamePath)' == ''">D:\Steam\steamapps\common\Celeste</CelesteGamePath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="Celeste">
+      <HintPath>$(CelesteGamePath)\Celeste.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="FNA">
+      <HintPath>$(CelesteGamePath)\FNA.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="Celeste.Mod.mm">
+      <HintPath>$(CelesteGamePath)\Celeste.Mod.mm.dll</HintPath>
+      <Private>false</Private>
+      <!-- This machine's Celeste.dll embeds a copy of the Everest API (compile-time
+           ambiguity CS0433); at runtime Celeste.Mod.mm.dll is the authoritative one,
+           so bind to it explicitly via the extern alias -->
+      <Aliases>mm</Aliases>
+    </Reference>
+  </ItemGroup>
+
+</Project>
